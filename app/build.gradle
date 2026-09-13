@@ -1,20 +1,98 @@
-plugins { id 'com.android.application' }
+```gradle
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    namespace 'xyz.filime.assistant'
-    compileSdk 34
+    namespace 'xyz.filime.app'
+    compileSdk 35
 
     defaultConfig {
-        applicationId 'xyz.filime.assistant'
-        minSdk 26
-        targetSdk 31
+        applicationId 'xyz.filime.app'
+        minSdk 23
+        targetSdk 35
         versionCode 1
         versionName '1.0'
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField(
+                'String',
+                'REWARDED_AD_UNIT_ID',
+                '"ca-app-pub-3940256099942544/5224354917"'
+            )
+        }
+
+        release {
+            minifyEnabled false
+
+            buildConfigField(
+                'String',
+                'REWARDED_AD_UNIT_ID',
+                '"ca-app-pub-4389499756069615/6888816246"'
+            )
+
+            proguardFiles(
+                getDefaultProguardFile(
+                    'proguard-android-optimize.txt'
+                ),
+                'proguard-rules.pro'
+            )
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core:1.12.0'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.core:core:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.webkit:webkit:1.12.1'
+
+    implementation 'com.google.android.gms:play-services-ads:23.6.0'
 }
+```
+
+### Important
+
+Your project should now have:
+
+```text
+FilimeXYZ/
+├── app/
+│   ├── build.gradle          ← this file
+│   └── src/
+│       └── main/
+│           └── java/
+│               └── xyz/
+│                   └── filime/
+│                       └── app/
+│                           └── MainActivity.java
+├── build.gradle
+├── settings.gradle
+└── gradle.properties
+```
+
+Delete the old:
+
+```text
+app/build.gradle.kts
+```
+
+because this new file is:
+
+```text
+app/build.gradle
+```
+
+Also make sure there is **no Kotlin plugin** in the root `build.gradle`.
