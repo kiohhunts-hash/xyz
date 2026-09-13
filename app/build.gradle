@@ -1,4 +1,4 @@
-```gradle
+gradle
 plugins {
     id 'com.android.application'
 }
@@ -61,13 +61,13 @@ dependencies {
 
     implementation 'com.google.android.gms:play-services-ads:23.6.0'
 }
-```
+
 
 ### Important
 
 Your project should now have:
 
-```text
+text
 FilimeXYZ/
 ├── app/
 │   ├── build.gradle          ← this file
@@ -81,18 +81,18 @@ FilimeXYZ/
 ├── build.gradle
 ├── settings.gradle
 └── gradle.properties
-```
+
 
 Delete the old:
 
-```text
+text
 app/build.gradle.kts
-```
+
 
 because this new file is:
 
-```text
+text
 app/build.gradle
-```
+
 
 Also make sure there is **no Kotlin plugin** in the root `build.gradle`.
